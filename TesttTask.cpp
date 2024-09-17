@@ -135,6 +135,28 @@ void unlock(LockCube& cube)
 {
     // PLEASE, PLACE YOUR SOLUTUION HERE
     // ...
+    // get the state of the cube
+    std::vector<std::vector<std::vector<bool>>> state = cube.read();
+    uint64_t x_size = state.size();
+    uint64_t y_size = state[0].size();
+    uint64_t z_size = state[0][0].size();
+
+    // go around the entire cube
+    for (uint64_t x = 0; x < x_size; ++x)
+    {
+        for (uint64_t y = 0; y < y_size; ++y)
+        {
+            for (uint64_t z = 0; z < z_size; ++z)
+            {
+                // If the cell is blocked, click on it
+                if (state[x][y][z])
+                {
+                    cube.click(x, y, z);
+                    state = cube.read(); // update the state after the click
+                }
+            }
+        }
+    }
 }
 
 
