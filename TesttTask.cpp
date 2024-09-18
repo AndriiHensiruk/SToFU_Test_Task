@@ -42,6 +42,10 @@ private:
     uint64_t x_size = 0, y_size = 0, z_size = 0;
 };
 
+bool LockCube::create(uint64_t x, uint64_t y, uint64_t z)
+{
+    return false;
+}
 
 void LockCube::click(uint64_t x, uint64_t y, uint64_t z)
 {
